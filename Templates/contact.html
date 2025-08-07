@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9fafb;
+            margin: 20px;
+            color: #333;
+            align-items:center ;
+        }
+        nav {
+        background: linear-gradient(to right, #007bff, #0056b3);
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-right: 20px;
+        font-weight: 600;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-links a::after {
+        content: '';
+        height: 2px;
+        width: 0;
+        background: white;
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        transition: 0.4s;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 25px;
+        }
+
+        .student-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+
+        .student-card a {
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .student-card a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+        img {
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            margin-top: 10px;
+        }
+
+        p {
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+           
+        </div>
+        <div class="account">
+            <button class="account-btn">My Account</button>
+            
+            <div class="dropdown-content">
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <h1>Contact Us</h1>
+
+    {% for student in student_list %}
+        <div class="student-card">
+            <a href="{% url 'details' slug=student.slug %}">
+                {{ student.name }}
+            </a>
+            <h2>Roll No: {{ student.rollno }}</h2>
+
+            {% if student.photo %}
+                <img src="{{ student.photo.url }}" alt="{{ student.name }}" width="150" />
+            {% else %}
+                <p>No photo available.</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No students found.</p>
+    {% endfor %}
+</body>
+</html>

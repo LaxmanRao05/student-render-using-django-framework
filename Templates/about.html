@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Ganapathi Laxman Rao</title>
+    <style>
+    body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.about-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 12px;
+}
+
+.about-container h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #1a73e8;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+nav {
+        background: linear-gradient(to right, #007bff, #0056b3);
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-right: 20px;
+        font-weight: 600;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-links a::after {
+        content: '';
+        height: 2px;
+        width: 0;
+        background: white;
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        transition: 0.4s;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    object-fit: cover;
+    border: 3px solid #1a73e8;
+}
+
+.bio {
+    flex: 1;
+    min-width: 250px;
+}
+
+.bio h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.bio p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.bio ul {
+    list-style: none;
+    padding: 0;
+}
+
+.bio li {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.bio li strong {
+    color: #1a73e8;
+}
+
+    </style>
+    <script src="{% static 'script/main.js' %}" defer></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+           
+        </div>
+        <div class="account">
+            <button class="account-btn">My Account</button>
+            
+            <div class="dropdown-content">
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="about-container">
+        <h1>About Me</h1>
+        <div class="about-content">
+           <img src="/media/student_photos/download.jpg" alt="My Photo">
+            <div class="bio">
+                <h2>Ganapathi Laxman Rao</h2>
+                <p>I am a passionate full-stack developer with experience in building dynamic web applications using HTML, CSS, JavaScript, Python, and Django. I love creating user-friendly, responsive, and accessible web experiences.</p>
+                <p>I enjoy problem-solving, learning new technologies, and contributing to open-source projects. Currently, I’m working on an exciting platform called <strong>Campus Career Hub</strong>.</p>
+                <ul>
+                    <li><strong>Email:</strong> ganapathilaxmanrao@email.com</li>
+                    <li><strong>Location:</strong> India</li>
+                    <li><strong>Skills:</strong> HTML, CSS, JavaScript, Python, Django, Firebase</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
